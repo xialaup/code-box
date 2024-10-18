@@ -1,14 +1,12 @@
 import { useStorage } from "@plasmohq/storage/hook"
 
+import CssCode from "~component/items/cssCode"
 import DownloadHtml from "~component/items/downloadHtml"
 import DownloadMarkdown from "~component/items/downloadMarkdown"
 import EditMarkdown from "~component/items/editMarkdown"
 import { i18n } from "~tools"
 
 export default function Cto51() {
-  const [copyCode, setCopyCode] = useStorage("51cto-copyCode", (v) =>
-    v === undefined ? true : v
-  )
   const [closeLoginModal, setCloseLoginModal] = useStorage(
     "51cto-closeLoginModal",
     (v) => (v === undefined ? true : v)
@@ -17,18 +15,6 @@ export default function Cto51() {
   return (
     <fieldset>
       <legend>{i18n("51ctoConfig")}</legend>
-      <div className="item">
-        <span>{i18n("51ctoCopyCode")}</span>
-        <input
-          type="checkbox"
-          id="51cto-copyCode"
-          name="51cto-copyCode"
-          className="codebox-offscreen"
-          checked={copyCode}
-          onChange={(e) => setCopyCode(e.target.checked)}
-        />
-        <label className="codebox-switch" htmlFor="51cto-copyCode"></label>
-      </div>
       <div className="item">
         <span>{i18n("51ctoCloseLoginModal")}</span>
         <input
@@ -46,6 +32,7 @@ export default function Cto51() {
       <EditMarkdown name="51cto"></EditMarkdown>
       <DownloadMarkdown name="51cto"></DownloadMarkdown>
       <DownloadHtml name="51cto"></DownloadHtml>
+      <CssCode name="51cto"></CssCode>
     </fieldset>
   )
 }
